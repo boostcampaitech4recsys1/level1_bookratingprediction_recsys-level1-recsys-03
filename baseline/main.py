@@ -5,12 +5,11 @@ import pandas as pd
 from src import seed_everything
 
 from src.data import context_data_load, context_data_split, context_data_loader
-from src.data import context_data_load2, context_data_split2
 from src.data import dl_data_load, dl_data_split, dl_data_loader
 from src.data import image_data_load, image_data_split, image_data_loader
 from src.data import text_data_load, text_data_split, text_data_loader
 
-from src import FactorizationMachineModel, FieldAwareFactorizationMachineModel
+from src import FactorizationMachineModel, FieldAwareFactorizationMachineModel, HighOrderFactorizationMachineModel, DeepFactorizationMachineModel
 from src import NeuralCollaborativeFiltering, WideAndDeepModel, DeepCrossNetworkModel
 from src import CNN_FM
 from src import DeepCoNN
@@ -21,8 +20,9 @@ def main(args):
 
     ######################## DATA LOAD
     print(f'--------------- {args.MODEL} Load Data ---------------')
-    if args.MODEL in ('FM', 'FFM'):
+    if args.MODEL in ('FM', 'FFM', 'HOFM', 'DFM') and args.DF == False:
         data = context_data_load(args)
+        
     elif args.MODEL in ('NCF', 'WDN', 'DCN'):
         data = dl_data_load(args)
     elif args.MODEL == 'CNN_FM':
@@ -31,19 +31,20 @@ def main(args):
         import nltk
         nltk.download('punkt')
         data = text_data_load(args)
-    else:
-        pass
+    # else:
+    #     data = read_df(args)
 
     ######################## Train/Valid Split
     print(f'--------------- {args.MODEL} Train/Valid Split ---------------')
-    if args.MODEL in ('FM', 'FFM'):
+    if args.MODEL in ('FM', 'FFM', 'HOFM', 'DFM'):
         if args.FOLD == False:
             data = context_data_split(args, data)
             data = context_data_loader(args, data)
 
     elif args.MODEL in ('NCF', 'WDN', 'DCN'):
-        data = dl_data_split(args, data)
-        data = dl_data_loader(args, data)
+        if args.FOLD == False:
+            data = dl_data_split(args, data)
+            data = dl_data_loader(args, data)
 
     elif args.MODEL=='CNN_FM':
         data = image_data_split(args, data)
@@ -61,6 +62,10 @@ def main(args):
         model = FactorizationMachineModel(args, data)
     elif args.MODEL=='FFM':
         model = FieldAwareFactorizationMachineModel(args, data)
+    elif args.MODEL=='HOFM':
+        model = HighOrderFactorizationMachineModel(args, data)
+    elif args.MODEL=='DFM':
+        model = DeepFactorizationMachineModel(args, data)
     elif args.MODEL=='NCF':
         model = NeuralCollaborativeFiltering(args, data)
     elif args.MODEL=='WDN':
@@ -71,6 +76,24 @@ def main(args):
         model = CNN_FM(args, data)
     elif args.MODEL=='DeepCoNN':
         model = DeepCoNN(args, data)
+    elif args.MODEL=='F4':
+        data = context_data_load(args)
+        data = context_data_split(args, data)
+        data = context_data_loader(args, data)
+        # args.EPOCHS = 2
+        # model = FactorizationMachineModel(args, data)
+        # model.train()
+        # args.EPOCHS = 2
+        # model = FieldAwareFactorizationMachineModel(args, data)
+        # model.train()
+        # args.EPOCHS = 2
+        # model = HighOrderFactorizationMachineModel(args, data)
+        # model.train()
+        args.EPOCHS = 4
+        args.WEIGHT_DECAY = 4.5e-3
+        model = DeepCrossNetworkModel(args, data)
+        model.train()
+        return
     else:
         pass
 
@@ -81,7 +104,7 @@ def main(args):
 
     ######################## INFERENCE
     print(f'--------------- {args.MODEL} PREDICT ---------------')
-    if args.MODEL in ('FM', 'FFM', 'NCF', 'WDN', 'DCN'):
+    if args.MODEL in ('FM', 'FFM', 'HOFM', 'DFM', 'NCF', 'WDN', 'DCN'):
         if args.FOLD == False:
             predicts = model.predict(data['test_dataloader'])
         else:
@@ -89,14 +112,17 @@ def main(args):
     elif args.MODEL=='CNN_FM':
         predicts  = model.predict(data['test_dataloader'])
     elif args.MODEL=='DeepCoNN':
-        predicts  = model.predict(data['test_dataloader'])
+        if args.FOLD == False:
+            predicts  = model.predict(data['test_dataloader'])
+        else:
+            predicts = model.train_fold(data)
     else:
         pass
 
     ######################## SAVE PREDICT
     print(f'--------------- SAVE {args.MODEL} PREDICT ---------------')
     submission = pd.read_csv(args.DATA_PATH + 'sample_submission.csv')
-    if args.MODEL in ('FM', 'FFM', 'NCF', 'WDN', 'DCN', 'CNN_FM', 'DeepCoNN'):
+    if args.MODEL in ('FM', 'FFM', 'HOFM', 'DFM','NCF', 'WDN', 'DCN', 'CNN_FM', 'DeepCoNN'):
         submission['rating'] = predicts
     else:
         pass
@@ -117,17 +143,17 @@ if __name__ == "__main__":
 
     ############### BASIC OPTION
     arg('--DATA_PATH', type=str, default='data/', help='Data path를 설정할 수 있습니다.')
-    arg('--MODEL', type=str, choices=['FM', 'FFM', 'NCF', 'WDN', 'DCN', 'CNN_FM', 'DeepCoNN'],
+    arg('--MODEL', type=str, choices=['FM', 'FFM', 'HOFM', 'DFM', 'NCF', 'WDN', 'DCN', 'CNN_FM', 'DeepCoNN', 'F4'],
                                 help='학습 및 예측할 모델을 선택할 수 있습니다.')
     arg('--DATA_SHUFFLE', type=bool, default=True, help='데이터 셔플 여부를 조정할 수 있습니다.')
     arg('--TEST_SIZE', type=float, default=0.2, help='Train/Valid split 비율을 조정할 수 있습니다.')
     arg('--SEED', type=int, default=42, help='seed 값을 조정할 수 있습니다.')
-    
+    arg('--DF', type=bool, default=False, help='seed 값을 조정할 수 있습니다.')
     ############### TRAINING OPTION
-    arg('--BATCH_SIZE', type=int, default=1024, help='Batch size를 조정할 수 있습니다.')
+    arg('--BATCH_SIZE', type=int, default=128, help='Batch size를 조정할 수 있습니다.')
     arg('--EPOCHS', type=int, default=10, help='Epoch 수를 조정할 수 있습니다.')
-    arg('--LR', type=float, default=1e-3, help='Learning Rate를 조정할 수 있습니다.')
-    arg('--WEIGHT_DECAY', type=float, default=1e-6, help='Adam optimizer에서 정규화에 사용하는 값을 조정할 수 있습니다.')
+    arg('--LR', type=float, default=2e-3, help='Learning Rate를 조정할 수 있습니다.')
+    arg('--WEIGHT_DECAY', type=float, default=1e-4, help='Adam optimizer에서 정규화에 사용하는 값을 조정할 수 있습니다.')
     arg('--LOAD_MODEL', type=str, default='image_model.pt', help='이전에 학습한 weights를 불러옵니다.')
     arg('--EX_VAL_LOSS', type=float, default=999999, help='이전에 학습한 val_loss를 불러옵니다.')
     arg('--FOLD', type=bool, default=False, help='5-Fold를 사용해서 모델을 학습 후 앙상블을 진행합니다.')
@@ -136,24 +162,33 @@ if __name__ == "__main__":
     arg('--DEVICE', type=str, default='cuda', choices=['cuda', 'cpu'], help='학습에 사용할 Device를 조정할 수 있습니다.')
 
     ############### FM
-    arg('--FM_EMBED_DIM', type=int, default=16, help='FM에서 embedding시킬 차원을 조정할 수 있습니다.')
+    arg('--FM_EMBED_DIM', type=int, default=1, help='FM에서 embedding시킬 차원을 조정할 수 있습니다.')
 
     ############### FFM
-    arg('--FFM_EMBED_DIM', type=int, default=16, help='FFM에서 embedding시킬 차원을 조정할 수 있습니다.')
+    arg('--FFM_EMBED_DIM', type=int, default=1, help='FFM에서 embedding시킬 차원을 조정할 수 있습니다.')
+    
+    ############### HOFM
+    arg('--HOFM_EMBED_DIM', type=int, default=1, help='HOFM에서 embedding시킬 차원을 조정할 수 있습니다.')
+    arg('--ORDER', type=int, default=10, help='HOFM에서 embedding시킬 차원을 조정할 수 있습니다.')
+    
+    ############### DFM
+    arg('--MLP_DIMS', type=int, default=3, help='HOFM에서 embedding시킬 차원을 조정할 수 있습니다.')
+    arg('--DFM_DROP_OUT', type=float, default=0.2, help='HOFM에서 embedding시킬 차원을 조정할 수 있습니다.')
+    arg('--DFM_EMBED_DIM', type=int, default=1, help='HOFM에서 embedding시킬 차원을 조정할 수 있습니다.')
 
     ############### NCF
-    arg('--NCF_EMBED_DIM', type=int, default=16, help='NCF에서 embedding시킬 차원을 조정할 수 있습니다.')
-    arg('--NCF_MLP_DIMS', type=list, default=(16, 16), help='NCF에서 MLP Network의 차원을 조정할 수 있습니다.')
+    arg('--NCF_EMBED_DIM', type=int, default=8, help='NCF에서 embedding시킬 차원을 조정할 수 있습니다.')
+    arg('--NCF_MLP_DIMS', type=list, default=(1, 1), help='NCF에서 MLP Network의 차원을 조정할 수 있습니다.')
     arg('--NCF_DROPOUT', type=float, default=0.2, help='NCF에서 Dropout rate를 조정할 수 있습니다.')
 
     ############### WDN
     arg('--WDN_EMBED_DIM', type=int, default=16, help='WDN에서 embedding시킬 차원을 조정할 수 있습니다.')
-    arg('--WDN_MLP_DIMS', type=list, default=(16, 16), help='WDN에서 MLP Network의 차원을 조정할 수 있습니다.')
+    arg('--WDN_MLP_DIMS', type=list, default=(12, 12), help='WDN에서 MLP Network의 차원을 조정할 수 있습니다.')
     arg('--WDN_DROPOUT', type=float, default=0.2, help='WDN에서 Dropout rate를 조정할 수 있습니다.')
 
     ############### DCN
     arg('--DCN_EMBED_DIM', type=int, default=16, help='DCN에서 embedding시킬 차원을 조정할 수 있습니다.')
-    arg('--DCN_MLP_DIMS', type=list, default=(16, 16), help='DCN에서 MLP Network의 차원을 조정할 수 있습니다.')
+    arg('--DCN_MLP_DIMS', type=int, default=130, help='DCN에서 MLP Network의 차원을 조정할 수 있습니다.')
     arg('--DCN_DROPOUT', type=float, default=0.2, help='DCN에서 Dropout rate를 조정할 수 있습니다.')
     arg('--DCN_NUM_LAYERS', type=int, default=3, help='DCN에서 Cross Network의 레이어 수를 조정할 수 있습니다.')
 

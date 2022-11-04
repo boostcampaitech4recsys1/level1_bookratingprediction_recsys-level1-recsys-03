@@ -1,0 +1,122 @@
+{\rtf1\ansi\ansicpg949\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset129 AppleSDGothicNeo-Regular;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue254;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c100000\c99608;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28300\viewh14840\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs96 \cf0 \cb2 \expnd0\expndtw0\kerning0
+1. base line \'b1\'d7\'b4\'eb\'b7\'ce\
+FM FFM NCF WDN DCN CNNF ,DeepConn\
+\
+2. EDA \'bd\'c7\'bd\'c0 1\
+Location , Category \
+=> \'b8\'f0\'b5\'e7 \'b8\'f0\'b5\'a8\'c0\'c7 \'bc\'ba\'b4\'c9\'c0\'cc \'c1\'f5\'b0\'a1 \'c7\'df\'c0\'bd\
+3.  K-FOLD(5)\
+=> \'c5\'ab \'c6\'f8\'c0\'b8\'b7\'ce \'bc\'ba\'b4\'c9\'c0\'cc \'c1\'f5\'b0\'a1\'c7\'df\'c0\'bd 0.4~\
+4. EDA isbn\
+Publish, Language, Location\
+=> \'b0\'e1\'c3\'f8\'c4\'a1\'b8\'a6 \'c3\'a4\'bf\'fc\'c0\'b8\'b3\'aa \'bc\'ba\'b4\'c9\'bf\'a1 \'ba\'af\'c7\'d4\'c0\'cc \'be\'f8\'b0\'c5\'b3\'aa \'be\'c7\'c8\'ad\'b5\'c6\'c0\'bd\
+5. \'b4\'d9\'b8\'a5 \'b8\'f0\'b5\'a8\
+=> \'b8\'f0\'b5\'a8\'c0\'cc \'b9\'ae\'c1\'a8\'b0\'a1 \'c7\'d8\'bc\'ad \'b4\'d9\'b8\'a5 \'b8\'f0\'b5\'a8\'c0\'bb \'c3\'a3\'b0\'d4\'b5\'ca.\
+Xgboost, Lightgbm, HOFM\
+Activation => sigmoid\'b0\'a1 \'c1\'d6\'bc\'ae\'c3\'b3\'b8\'ae \'b5\'c7\'be\'ee\'c0\'d6\'be\'ee\'bc\'ad\
+\'c0\'cc\'b0\'c9 \'bb\'ec\'b8\'ae\'b8\'e9\'bc\'ad \'b4\'d9\'be\'e7\'c7\'d1 activation fn\'bd\'c3\'b5\'b5\'c7\'d8\'ba\'bd\
+=> \'bc\'ba\'b4\'c9 \'c7\'e2\'bb\'f3 X FM\'ba\'b8\'b4\'d9 \'c1\'c1\'c0\'ba \'b8\'f0\'b5\'a8 \'be\'f8\'be\'fa\'c0\'bd\
+\
+6. HyPerParameter \'c3\'a3\'b1\'e2 \'bd\'c3\'b5\'b5\
+=> weight decay, lr \'b8\'a6 \'b3\'f4\'c0\'cc\'b4\'c2\'b0\'d4 \'c1\'c1\'b4\'d9\'b4\'c2\'b0\'c9 \'be\'cb\'b0\'d4\'b5\'ca\
+lr\'c0\'bb \'b3\'f4\'c0\'cc\'b4\'cf \'c7\'d0\'bd\'c0\'c0\'cc \'ba\'fc\'b8\'a3\'b0\'d4 \'bc\'f6\'b7\'c5\'b5\'c7\'bc\'ad epoch\'b5\'b5 \'b3\'b7\'c3\'df\'b0\'d4\'b5\'ca\
+\
+=> \'bc\'ba\'b4\'c9 \'c7\'e2\'bb\'f3\'c0\'ba \'c8\'ae\'bd\'c7\'c8\'f7 \'c0\'d6\'be\'fa\'c0\'bd.\
+\
+7. Ensemble \'bd\'c3\'b5\'b5\
+=>  (FM, FFM, HOFM) \'b4\'dc\'c0\'cf FM\'b0\'fa \'c5\'a9\'b0\'d4 \'c2\'f7\'c0\'cc\'b0\'a1 \'be\'f8\'c0\'bd\
+3\'b0\'b3\'b8\'a6 \'c7\'d5\'c4\'a1\'b3\'aa FM \'b4\'dc\'c0\'cf\'c0\'cc\'b3\'aa\
+=> DCN \'b1\'ee\'c1\'f6 \'c7\'d5\'c4\'a1\'b4\'cf 0.1\'c1\'a4\'b5\'b5 \'c7\'e2\'bb\'f3\'b5\'ca.\
+=> FM FFM HOFM DCN\
+\
+8. 3\'c2\'f7 EDA\
+Age\'b0\'a1 \'b2\'cf\'b3\'aa \'bf\'b5\'c7\'e2\'c0\'bb \'b3\'a2\'c4\'a1\'b4\'c2\'b0\'c5 \'b0\'b0\'be\'c6\'bc\'ad,\
+\'b0\'e1\'c3\'f8\'c4\'a1\'b8\'a6 \'c6\'f2\'b1\'d5\'b0\'aa\'c0\'b8\'b7\'ce \'c3\'a4\'bf\'ec\'b4\'c2\'b0\'cd\'c0\'bb \'c3\'d6\'ba\'f3\'b0\'aa\'c0\'b8\'b7\'ce \'c3\'a4\'bf\'f6\'ba\'b8\'b0\'ed\
+Randomforest\'b7\'ce pseudo \'b6\'f3\'ba\'a7\'b8\'b5\'c0\'bb \'bd\'c3\'b5\'b5\'c7\'d4.\
+=> age acc 66%\
+=> \'bf\'c0\'c8\'f7\'b7\'c1 \'bc\'ba\'b4\'c9\'c0\'cc \'be\'c7\'c8\'ad\
+Rating pseudo => DCN\'c0\'cc FM\'b0\'e8\'bf\'ad\'bf\'a1 \'ba\'f1\'c7\'d8\'bc\'ad \'c1\'a1\'bc\'f6\'b0\'a1 \'b3\'f4\'be\'d2\'c0\'bd.\
+DCN : 2.2\
+FM : 2.16~2.18 => \'bc\'f6\'b5\'b5 \'b6\'f3\'ba\'a7\'b8\'b5 \'c7\'d8\'c1\'dc\
+DCN\'c0\'cc \'b1\'d7\'b0\'c9 \'c7\'d0\'bd\'c0\'c7\'d4.\
+FM\'c0\'c7 \'bc\'f6\'b5\'b5 \'b6\'f3\'ba\'a7\'b8\'b5\'c0\'bb \'c7\'d0\'bd\'c0\'c7\'cf\'b0\'d4\'b5\'c7\'b8\'e9 DCN\'c0\'ba FM\'c0\'c7\
+\'be\'cb\'b0\'ed\'b8\'ae\'c1\'f2\'c0\'bb \'c7\'d0\'bd\'c0\'c7\'cf\'b0\'d4\'b5\'c7\'be\'ee \'be\'d3\'bb\'f3\'ba\'ed\'bd\'c3 \'b0\'df\'b0\'ed\'c7\'d1 \'be\'d3\'bb\'f3\'ba\'ed\'c8\'bf\'b0\'fa\'b0\'a1\
+\'be\'f8\'be\'ee\'c1\'fa\'b0\'cd\'c0\'b8\'b7\'ce \'bf\'b9\'bb\'f3\'c7\'df\'c0\'bd.\
+\'bf\'b9\'bb\'f3\'b4\'eb\'b7\'ce \'b4\'dc\'c0\'cf \'b8\'f0\'b5\'a8\'c0\'c7 \'b0\'e6\'bf\'ec\'bf\'a1\'b4\'c2 \'c1\'a1\'bc\'f6\'b0\'a1 \'bf\'c3\'b6\'f3\'b0\'ac\'c1\'f6\'b8\'b8,\
+\'be\'d3\'bb\'f3\'ba\'ed\'c0\'bb \'c7\'df\'c0\'bb\'b6\'a7 \'c1\'a1\'bc\'f6 \'c7\'e2\'bb\'f3\'c0\'c7 \'c8\'bf\'b0\'fa\'b0\'a1 \'c0\'fc\'b8\'b8\'c5\'ad \'be\'f8\'be\'fa\'c0\'bd.\
+\
+9. Feature\'b5\'e9\'c0\'bb Category\'c8\'ad \'c7\'d8\'bc\'ad 120\'b0\'b3 \'b1\'e2\'c1\'d8\'c0\'b8\'b7\'ce\
+\'c3\'df\'b8\'b2.\
+=> \'bc\'ba\'b4\'c9\'c0\'cc \'c7\'e2\'bb\'f3\'b5\'ca.\
+=> \'be\'ee\'b6\'b2 Feature\'b8\'a6 \'be\'c8\'bd\'e1\'be\'df\'b5\'c7\'b4\'c2\'c1\'f6 \'b0\'e8\'bc\'d3 \'bd\'c3\'b5\'b5\'c7\'d8\'ba\'b8\'b8\'e9\'bc\'ad \'c3\'a3\'c0\'bd.\
+Backward selection.\
+Title city state => FM // None > drop\
+Title => DCN // None > drop\
+\
+10. Cold, warm // u,b\
+CF \
+2.2~ \'c1\'a4\'b5\'b5 \'b3\'aa\'bf\'cd\'be\'df\'b5\'c7\'b4\'c2\'b5\'a5 \'be\'c8\'b3\'aa\'bf\'c3\'b0\'cd \'b0\'b0\'be\'d2\'c0\'bd.\
+\'c0\'fc\'bf\'a1 \'c7\'df\'b4\'f8 \'bd\'c7\'bd\'c0\'c0\'bb \'c3\'a3\'be\'c6\'ba\'b8\'b4\'cf \'c1\'a1\'bc\'f6\'b4\'eb\'b0\'a1 3~\'b4\'eb \'bf\'b4\'c0\'bd.\
+KNN \'c7\'d8\'ba\'b8\'b4\'cf 3~\
+\'c0\'da\'c4\'ab\'b5\'e5 \'c0\'af\'bb\'e7\'b5\'b5 cosine \'c0\'af\'bb\'e7\'b5\'b5\'b8\'a6 \'bd\'c3\'b5\'b5\'c7\'d8\'ba\'b8\'b7\'c1 \'c7\'df\'c0\'b8\'b3\'aa\
+\'c0\'af\'bb\'e7\'b5\'b5 \'c3\'f8\'c1\'a4\'c7\'d2\'b6\'a7 title\'b8\'b8 \'b0\'a1\'c1\'f6\'b0\'ed \'b0\'c5\'b8\'ae\'b8\'a6. \'c3\'f8\'c1\'a4\'c7\'d4.\
+2.2~ => 3~\
+FM user_id feature\'b8\'a6 \'b9\'f6\'b8\'ae\'b0\'ed \'c7\'d8\'ba\'bd\
+Book 2.5~ \
+Lightgbm 2.2\'c8\'c4\'b9\'dd\
+\
+11. Submission \'ba\'d0\'c6\'f7\'b0\'a1 \'c7\'d1\'c2\'ca\'bf\'a1 \'c5\'a9\'b0\'d4 \'c6\'ed\'c7\'e2\'b5\'c7\'be\'ee\'c0\'d6\'c0\'bd.\
+\
+Over sampling\'c8\'c4 \'c7\'d0\'bd\'c0.\
+=> \'b6\'c8\'b0\'b0\'c0\'ba \'ba\'d0\'c6\'f7\'b7\'ce submission \'bb\'fd\'bc\'ba\'b5\'ca.\
+=> FM\'c0\'cc \'b1\'d7\'b7\'b8\'b0\'d4 \'c7\'d0\'bd\'c0\'c7\'d1\'b4\'d9\'b0\'ed \'c6\'c7\'b4\'dc\'b5\'ca.\
+=> \'b4\'dc\'bc\'f8 concat\'c7\'d8\'bc\'ad \'c7\'d0\'bd\'c0\'c7\'d4.\
+\
+Optimal-weighted \
+\
+\'c3\'d6\'c0\'fb\'c0\'c7 \'b0\'a1\'c1\'df\'c4\'a1\'b8\'a6 \'c3\'a3\'b1\'e2\
+\
+\'c1\'a4\'b4\'e4-\'c3\'a4\'c1\'a1*0.2\
+\'c1\'a4\'b4\'e4-\'c3\'a4\'c1\'a1*0.4\
+\'c1\'a4\'b4\'e4-\'c3\'a4\'c1\'a1*0.4\
+\
+\'c1\'a6\'c3\'e2 \'c7\'d8\'bc\'ad \'b8\'c2\'c3\'e7\'be\'df\'b5\'c7\'b4\'c2 \'c1\'a4\'b4\'e4\'c0\'cc \'be\'c6\'b4\'cf\'bf\'a9\'bc\'ad \'c1\'a4\'c8\'ae\'c7\'d1 \'bc\'f6\'c4\'a1\'b0\'a1 \'be\'c6\'b4\'d4.\
+\'c3\'a4\'c1\'a1 \'c6\'c4\'c0\'cf\'c0\'ba k-fold\'b0\'a1 \'be\'c8\'c7\'d1 \'b4\'dc\'c0\'cf \'c7\'d0\'bd\'c0\'b8\'f0\'b5\'a8\'c0\'cc\'b6\'f3 \'c2\'f7\'c0\'cc\'b0\'a1 \'c0\'d6\'c0\'bb\'bc\'f6 \'c0\'d6\'c0\'bd.\
+=> \'be\'e0\'b0\'a3\'c0\'c7 \'bc\'ba\'b4\'c9 \'c7\'e2\'bb\'f3\'c0\'ba \'c0\'d6\'be\'fa\'c0\'bd.\
+=> /3 \
+\
+MF \'c1\'a1\'bc\'f6\'b0\'a1 \'c0\'df\'b3\'aa\'bf\'d4\'c0\'b8\'b3\'aa\
+\'c8\'ae\'c0\'ce\'c7\'d8\'ba\'b8\'b4\'cf \'bf\'c0\'b9\'f6\'c7\'c7\'c6\'c3\'b5\'c8 \'b0\'e1\'b0\'fa\'bf\'b4\'c0\'bd.\
+\
+1\'c2\'f7 EDA (\'bd\'c7\'bd\'c01)\
+FM, FFM, HOFM, DCN  2.14\
+2\'c2\'f7 EDA (\'c4\'ab\'c5\'d7\'b0\'ed\'b8\'ae\'c8\'ad 120\'b0\'b3)\
+FM,FFM,DCN  2.14\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb2 (2.14 + 2.14)/2 => \'c3\'d6\'c1\'be\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb2 \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}
