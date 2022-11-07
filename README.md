@@ -58,7 +58,7 @@
 | --- | --- |
 | 아키텍처 | FactorizationMachineModel + FieldAwareFactorizationMachineModel +
 DeepCrossNetworkModel |
-| LB점수(6/14등) | • public : 2.1407
+| LB점수(8/14등) | • public : 2.1407
 • private : 2.1409 |
 | Training Feature | user_id, isbn, age, publisher, language, location country
 yerar of publication, book author, category
