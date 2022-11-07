@@ -43,11 +43,12 @@
  |
 | 기대 효과 | 사용자의 책 평점을 예측하는 모델을 개발하고, 이 모델이 사용자에게 책을 추천할 때 좋은 기준이 될 수 있을 것이다.  |
 
-![프로젝트 구조도](README%20md%208e152cc3136c476391f4c81a1b28f143/Untitled.png)
+![프로젝트 구조도](https://user-images.githubusercontent.com/76675506/200248697-c05d655e-e983-463c-b7ee-973edde90af9.png)
+
 
 프로젝트 구조도
 
-![데이터 구조도](README%20md%208e152cc3136c476391f4c81a1b28f143/Untitled%201.png)
+![데이터 구조도](https://user-images.githubusercontent.com/76675506/200249158-5f0d97f7-1990-47e0-935a-ef975dc432ce.png)
 
 데이터 구조도
 
@@ -72,11 +73,11 @@ yerar of publication, book author, category
 
 ### **Score Record (RMSE)**
 
-![private board evaluation](README%20md%208e152cc3136c476391f4c81a1b28f143/Untitled%202.png)
+![private board evaluation](https://user-images.githubusercontent.com/76675506/200249433-a41ea708-9040-4060-9c75-b6ad03814039.png)
 
 private board evaluation
 
-![public board evaluation](README%20md%208e152cc3136c476391f4c81a1b28f143/Untitled%203.png)
+![public board evaluation](https://user-images.githubusercontent.com/76675506/200249732-8e304813-ed2a-4a67-8a15-1034276d3cb6.png)
 
 public board evaluation
 
@@ -94,6 +95,6 @@ pip install -r requirements.txt
 python main.py --MODEL FM --DATA_PATH data
 ```
 
-![options](README%20md%208e152cc3136c476391f4c81a1b28f143/Untitled%204.png)
+![options](https://user-images.githubusercontent.com/76675506/200249850-d40a0e84-5710-4bbd-8972-22655a935382.png)
 
 options
