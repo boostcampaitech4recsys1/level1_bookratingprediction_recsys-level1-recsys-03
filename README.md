@@ -34,8 +34,7 @@
 | 프로젝트 개요 | 부스트캠프 Level1-U stage 강의를 통해 배운 내용을 바탕으로, 모델을 설계하고 학습하며 추론을 통해 나온 결과를 바탕으로 순위 산정하는 방식 |
 | 활용 장비 및 재료 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| • 서버: Tesla V100, 88GB RAM Server<br>• 개발 IDE: Jupyter Notebook, VS Code<br>• 협업 Tool: Notion, Slack, Zoom |
 | Metric | RMSE Score |
-| Dataset | • books.csv : 149,570개의 책(item)에 대한 정보를 담고 있는 메타데이터<br>• users.csv : 68,092명의 고객(user)에 대한 정보를 담고 있는 메타데이터<br>• train_ratings.csv : 59,803명의 사용자(user)가 129,777개의 책(item)에 대해 남긴 306,795건의 평점(rating) 데이터
- |
+| Dataset | • books.csv : 149,570개의 책(item)에 대한 정보를 담고 있는 메타데이터<br>• users.csv : 68,092명의 고객(user)에 대한 정보를 담고 있는 메타데이터<br>• train_ratings.csv : 59,803명의 사용자(user)가 129,777개의 책(item)에 대해 남긴 306,795건의 평점(rating) 데이터 |
 | 기대 효과 | 사용자의 책 평점을 예측하는 모델을 개발하고, 이 모델이 사용자에게 책을 추천할 때 좋은 기준이 될 수 있을 것이다.  |
 
 ![프로젝트 구조도](https://user-images.githubusercontent.com/76675506/200248697-c05d655e-e983-463c-b7ee-973edde90af9.png)
