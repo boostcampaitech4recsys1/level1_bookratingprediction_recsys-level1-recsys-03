@@ -149,6 +149,18 @@ class _FactorizationMachineModel(nn.Module):
         
         return self.relu(x.squeeze(1))
         #return x.squeeze(1)
+class _FMDCN(nn.Module):
+
+    def __init__(self, field_dims, fm_embed_dim, dcn_embed_dim, mlp_dims, dropout, num_layers, batch_size):
+        super().__init__()
+        self.FM = _FactorizationMachineModel(field_dims, fm_embed_dim)
+        self.DCN = _DeepCrossNetworkModel(field_dims, dcn_embed_dim, num_layers=num_layers, dropout=dropout, mlp_dims=mlp_dims)
+        #self.model = _DeepCrossNetworkModel(self.field_dims, self.embed_dim, num_layers=self.num_layers, mlp_dims=self.mlp_dims, dropout=self.dropout)
+        self.linear = nn.Linear(batch_size*2, batch_size)
+    def forward(self, x: torch.Tensor):
+        x = torch.concat([self.FM(x), self.DCN(x)])
+        x = self.linear(x)
+        return x
 
 class FieldAwareFactorizationMachine(nn.Module):
 

@@ -107,14 +107,14 @@ def context_data_load(args):
     books['language'] = books['language'].apply(get_core)
     l = list(books.groupby('publisher')['publisher'].count().sort_values(ascending=False).head(250).index) # 200 
     books['publisher'] = books['publisher'].apply(get_core)
-    # l = list(books.groupby('book_title')['book_title'].count().sort_values(ascending=False).head(100).index)
-    # books['book_title'] = books['book_title'].apply(get_core)
+    l = list(books.groupby('book_title')['book_title'].count().sort_values(ascending=False).head(100).index)
+    books['book_title'] = books['book_title'].apply(get_core)
     l = list(users.groupby('location_country')['location_country'].count().sort_values(ascending=False).head(32).index)
     users['location_country'] = users['location_country'].apply(get_core)
-    # l = list(users.groupby('location_state')['location_state'].count().sort_values(ascending=False).head(100).index)
-    # users['location_state'] = users['location_state'].apply(get_core)
-    # l = list(users.groupby('location_city')['location_city'].count().sort_values(ascending=False).head(600).index)
-    # users['location_city'] = users['location_city'].apply(get_core)
+    l = list(users.groupby('location_state')['location_state'].count().sort_values(ascending=False).head(100).index)
+    users['location_state'] = users['location_state'].apply(get_core)
+    l = list(users.groupby('location_city')['location_city'].count().sort_values(ascending=False).head(600).index)
+    users['location_city'] = users['location_city'].apply(get_core)
     l = list(books.groupby('book_author')['book_author'].count().sort_values(ascending=False).head(450).index) # 400
     books['book_author'] = books['book_author'].apply(get_core)
     
@@ -151,7 +151,7 @@ def context_data_load(args):
     idx, context_train, context_test = process_context_data(users, books, train, test)
     
     field_dims = np.array([len(user2idx), len(isbn2idx),
-                            1, len(idx['loc_city2idx']), len(idx['loc_state2idx']), len(idx['loc_country2idx']),
+                            6, len(idx['loc_city2idx']), len(idx['loc_state2idx']), len(idx['loc_country2idx']),
                             len(idx['category2idx']),len(idx['publisher2idx']), len(idx['language2idx']), len(idx['author2idx']), len(idx['title2idx'])], dtype=np.uint32)
 
     

@@ -6,13 +6,13 @@ from src import seed_everything
 
 from src.data import context_data_load, context_data_split, context_data_loader
 from src.data import dl_data_load, dl_data_split, dl_data_loader
-from src.data import image_data_load, image_data_split, image_data_loader
-from src.data import text_data_load, text_data_split, text_data_loader
+#from src.data import image_data_load, image_data_split, image_data_loader
+#from src.data import text_data_load, text_data_split, text_data_loader
 
-from src import FactorizationMachineModel, FieldAwareFactorizationMachineModel, HighOrderFactorizationMachineModel, DeepFactorizationMachineModel
+from src import FactorizationMachineModel, FieldAwareFactorizationMachineModel, HighOrderFactorizationMachineModel, DeepFactorizationMachineModel, FMDCN
 from src import NeuralCollaborativeFiltering, WideAndDeepModel, DeepCrossNetworkModel
-from src import CNN_FM
-from src import DeepCoNN
+#from src import CNN_FM
+#from src import DeepCoNN
 
 
 def main(args):
@@ -20,7 +20,7 @@ def main(args):
 
     ######################## DATA LOAD
     print(f'--------------- {args.MODEL} Load Data ---------------')
-    if args.MODEL in ('FM', 'FFM', 'HOFM', 'DFM') and args.DF == False:
+    if args.MODEL in ('FM', 'FFM', 'HOFM', 'DFM', 'FMDCN') and args.DF == False:
         data = context_data_load(args)
         
     elif args.MODEL in ('NCF', 'WDN', 'DCN'):
@@ -36,7 +36,7 @@ def main(args):
 
     ######################## Train/Valid Split
     print(f'--------------- {args.MODEL} Train/Valid Split ---------------')
-    if args.MODEL in ('FM', 'FFM', 'HOFM', 'DFM'):
+    if args.MODEL in ('FM', 'FFM', 'HOFM', 'DFM', 'FMDCN'):
         if args.FOLD == False:
             data = context_data_split(args, data)
             data = context_data_loader(args, data)
@@ -76,6 +76,8 @@ def main(args):
         model = CNN_FM(args, data)
     elif args.MODEL=='DeepCoNN':
         model = DeepCoNN(args, data)
+    elif args.MODEL=='FMDCN':
+        model = FMDCN(args,data)
     elif args.MODEL=='F4':
         data = context_data_load(args)
         data = context_data_split(args, data)
@@ -104,7 +106,7 @@ def main(args):
 
     ######################## INFERENCE
     print(f'--------------- {args.MODEL} PREDICT ---------------')
-    if args.MODEL in ('FM', 'FFM', 'HOFM', 'DFM', 'NCF', 'WDN', 'DCN'):
+    if args.MODEL in ('FM', 'FFM', 'HOFM', 'DFM', 'NCF', 'WDN', 'DCN', 'FMDCN'):
         if args.FOLD == False:
             predicts = model.predict(data['test_dataloader'])
         else:
@@ -122,7 +124,7 @@ def main(args):
     ######################## SAVE PREDICT
     print(f'--------------- SAVE {args.MODEL} PREDICT ---------------')
     submission = pd.read_csv(args.DATA_PATH + 'sample_submission.csv')
-    if args.MODEL in ('FM', 'FFM', 'HOFM', 'DFM','NCF', 'WDN', 'DCN', 'CNN_FM', 'DeepCoNN'):
+    if args.MODEL in ('FM', 'FFM', 'HOFM', 'DFM','NCF', 'WDN', 'FMDCN', 'DCN', 'CNN_FM', 'DeepCoNN'):
         submission['rating'] = predicts
     else:
         pass
@@ -143,7 +145,7 @@ if __name__ == "__main__":
 
     ############### BASIC OPTION
     arg('--DATA_PATH', type=str, default='data/', help='Data path를 설정할 수 있습니다.')
-    arg('--MODEL', type=str, choices=['FM', 'FFM', 'HOFM', 'DFM', 'NCF', 'WDN', 'DCN', 'CNN_FM', 'DeepCoNN', 'F4'],
+    arg('--MODEL', type=str, choices=['FM', 'FMDCN', 'FFM', 'HOFM', 'DFM', 'NCF', 'WDN', 'DCN', 'CNN_FM', 'DeepCoNN', 'F4'],
                                 help='학습 및 예측할 모델을 선택할 수 있습니다.')
     arg('--DATA_SHUFFLE', type=bool, default=True, help='데이터 셔플 여부를 조정할 수 있습니다.')
     arg('--TEST_SIZE', type=float, default=0.2, help='Train/Valid split 비율을 조정할 수 있습니다.')
@@ -159,7 +161,7 @@ if __name__ == "__main__":
     arg('--FOLD', type=bool, default=False, help='5-Fold를 사용해서 모델을 학습 후 앙상블을 진행합니다.')
     
     ############### GPU
-    arg('--DEVICE', type=str, default='cuda', choices=['cuda', 'cpu'], help='학습에 사용할 Device를 조정할 수 있습니다.')
+    arg('--DEVICE', type=str, default='cpu', choices=['cuda', 'cpu'], help='학습에 사용할 Device를 조정할 수 있습니다.')
 
     ############### FM
     arg('--FM_EMBED_DIM', type=int, default=1, help='FM에서 embedding시킬 차원을 조정할 수 있습니다.')
