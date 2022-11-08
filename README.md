@@ -9,7 +9,8 @@
 > Contents
 > 
 > 
-> [Team Members](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03/edit/main/README.md#team-members)
+> [Team Members](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03#team-members)
+> 
 > 
 > [Project Introduction](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03/edit/main/README.md#project-introduction)
 > 
