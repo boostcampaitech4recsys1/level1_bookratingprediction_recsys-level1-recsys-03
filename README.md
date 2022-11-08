@@ -1,24 +1,25 @@
 # README.md
 
-[https://img.shields.io/badge/python-3.8.5-blue](https://img.shields.io/badge/python-3.8.5-blue)
+<img src="https://img.shields.io/badge/python-3.8.5-blue">
 
 ### **[RecSys] Book Rating Prediction**
 
 사용자의 책 평점 데이터를 바탕으로 사용자가 어떤 책을 더 선호할지 예측
 
-> **Contents**
+> Contents
 > 
 > 
-> Team Members
+> [Team Members](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03/edit/main/README.md#team-members)
 > 
-> Project Introduction) 
+> [Project Introduction](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03/edit/main/README.md#project-introduction)
 > 
-> Architecture
+> [Architecture](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03/edit/main/README.md#architecture)
 > 
-> Score Record (RMSE)
+> [Score Record (RMSE)](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03/edit/main/README.md#score-record-rmse)
 > 
-> Getting Started
+> [Getting Started](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03/edit/main/README.md#getting-started)
 > 
+
 
 ### Team Members
 
@@ -27,7 +28,7 @@
 | [Github](https://github.com/soso6079) | [Github](https://github.com/parkkyungjun) | [Github](https://github.com/oceanofglitta) | [Github](https://github.com/HeeJeongOh) | [Github](https://github.com/sobin98) |
 | soso6079@naver.com | rudwns708.14564@gmail.com | oceanofglitta@gmail.com | ohhj1999@gmail.com | sobing98@gmail.com |
 
-## Project Introduction
+### Project Introduction
 
 | 프로젝트 주제 | 사용자의 책 평점 데이터를 바탕으로 사용자가 어떤 책을 더 선호할지 예측 |
 | --- | --- |
@@ -39,14 +40,14 @@
 
 ![프로젝트 구조도](https://user-images.githubusercontent.com/76675506/200248697-c05d655e-e983-463c-b7ee-973edde90af9.png)
 
-
-프로젝트 구조도
+*프로젝트 구조도*
 
 ![데이터 구조도](https://user-images.githubusercontent.com/76675506/200249158-5f0d97f7-1990-47e0-935a-ef975dc432ce.png)
 
-데이터 구조도
+*데이터 구조도*
 
-## Architecture
+
+### Architecture
 
 | 분류 | 내용 |
 | --- | --- |
@@ -60,13 +61,14 @@
 
 ![private board evaluation](https://user-images.githubusercontent.com/76675506/200249433-a41ea708-9040-4060-9c75-b6ad03814039.png)
 
-private board evaluation
+*private board evaluation*
 
 ![public board evaluation](https://user-images.githubusercontent.com/76675506/200249732-8e304813-ed2a-4a67-8a15-1034276d3cb6.png)
 
-public board evaluation
+*public board evaluation*
 
-## Getting Started
+
+### Getting Started
 
 - requirements : `install requirements`
 
@@ -82,4 +84,4 @@ python main.py --MODEL FM --DATA_PATH data
 
 ![options](https://user-images.githubusercontent.com/76675506/200249850-d40a0e84-5710-4bbd-8972-22655a935382.png)
 
-options
+*options*
