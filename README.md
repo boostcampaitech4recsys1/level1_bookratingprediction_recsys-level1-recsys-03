@@ -12,13 +12,13 @@
 > [Team Members](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03#team-members)
 > 
 > 
-> [Project Introduction](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03/edit/main/README.md#project-introduction)
+> [Project Introduction](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03#project-introduction)
 > 
-> [Architecture](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03/edit/main/README.md#architecture)
+> [Architecture](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03#architecture)
 > 
-> [Score Record (RMSE)](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03/edit/main/README.md#score-record-rmse)
+> [Score Record (RMSE)](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03#score-record-rmse)
 > 
-> [Getting Started](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03/edit/main/README.md#getting-started)
+> [Getting Started](https://github.com/boostcampaitech4recsys1/level1_bookratingprediction_recsys-level1-recsys-03#getting-started)
 > 
 
 
