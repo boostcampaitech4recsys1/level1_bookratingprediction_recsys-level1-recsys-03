@@ -6,6 +6,8 @@
 
 사용자의 책 평점 데이터를 바탕으로 사용자가 어떤 책을 더 선호할지 예측
 
+데이터 출처: https://www.kaggle.com/datasets/ruchi798/bookcrossing-dataset
+
 > Contents
 > 
 > 
