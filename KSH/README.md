@@ -24,3 +24,10 @@ for user in user_list:
 - 변수 별로 다른 threshold 적용
   - 클러스터의 개수를 정할 때 사용하는 elbow method를 참고해서 적절한 thresold를 찾음
 - 변수 별로 동일한 threshold 적용
+
+## contents_based_similarity
+---
+- 유저 유사도 계산을 위한 사전 클러스터링
+    - DBSCAN, K-Means를 테스트한 결과 실루엣 스코어가 더 높은 K-Means 선택
+- 유저 유사도 기반 cold start 문제에 대한 rmse: 2.4
+    - FM 모델은 동일 문제에 대해 2.3이 나왔으므로 사용할 수 없닥 판단
