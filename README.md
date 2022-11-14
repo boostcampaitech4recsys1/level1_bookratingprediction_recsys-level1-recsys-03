@@ -6,9 +6,9 @@
 
 사용자의 책 평점 데이터를 바탕으로 사용자의 평점을 예측
 
-Wrap-up Report: https://recsys3.notion.site/WrapUp-Report-00c6890c70464ad0ad00283e9a98ad48
+[💻 Wrap-up Report 바로가기](https://recsys3.notion.site/WrapUp-Report-00c6890c70464ad0ad00283e9a98ad48)
 
-데이터 출처: https://www.kaggle.com/datasets/ruchi798/bookcrossing-dataset
+[🗒️ 데이터 출처](https://www.kaggle.com/datasets/ruchi798/bookcrossing-dataset)
 
 > Contents
 > 
